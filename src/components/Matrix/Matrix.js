@@ -41,18 +41,21 @@ export const Matrix = ({m, n}) => {
         return table
     }
 
-    const sum = (row) => {
+    const getSumsRow = (row) => {
         return row.reduce((summa, item) => summa+item, 0) 
     }
-    const average = (arr) => {
+    const getAverages = (arr) => {
+        const arrAverage=[]
         const rowCount = arr.length || 0
         const columnCount = arr[0].length || 0
         for (let j=0; j< columnCount; j++) {
+            let sum = 0
             for (let i=0; i< rowCount; i++) {
-
+                sum += arr[i][j]
             }
+            arrAverage[j] = Math.ceil(sum/rowCount)
         }
-        //return sum(column)/column.length
+        return arrAverage
     }
 
     useEffect(()=> {
