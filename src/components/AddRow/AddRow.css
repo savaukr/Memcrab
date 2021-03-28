@@ -1,0 +1,20 @@
+.addrRow-wrap {
+    display: flex;
+    justify-content: center;
+}
+.addrRow-wrap button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: rgb(13, 51, 51);
+    color: #ffff;
+    font-size: 18px;
+    line-height: 20px;
+    cursor:pointer;
+}
+.addrRow-wrap button:hover {
+    background-color: rgb(24, 87, 87);
+}

@@ -1,0 +1,57 @@
+﻿.matrix-row {
+    display:flex;
+    justify-content: center;
+}
+.matrix-row:last-child {
+    margin-top:10px;
+}
+.matrix-ceil {
+    width:50px;
+    height: 55px;
+    margin:1px;
+    padding: 0 15px;
+    border: 2px solid rgb(255,255,255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: rgb(80,80,80);
+}
+.matrix-ceil.part {
+    background-color: red;
+}
+.bright {
+    background-color: rgb(80,80,80);
+    color: rgb(255,255,255)
+}
+.sum {
+    min-width:100px;
+    color:rgb(255,255,255);
+    background-color: rgb(55,202,139);
+}
+.footer {
+    background-color: rgb(255,255,255);
+    color: rgb(80, 80, 80);
+    border-color: rgb(80, 80, 80);
+}
+.sidebar-row {
+    width:100px;
+    background-color: rgb(55,202,139);
+}
+.sidebar-row button {
+    width:60%;
+    height: 80%;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    border:none;
+}
+.sidebar-row button:hover {
+    background-color: rgb(241, 100, 107);
+}
+.matrix-row:last-child .sidebar-row:after {
+    content:'Середнє стовпця';
+    font-size: 16px;
+    width:100%;
+}
