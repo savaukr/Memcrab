@@ -19,8 +19,30 @@
     color: rgb(80,80,80);
 }
 .matrix-ceil.part {
-    background-color: red;
+    color: rgb(20,20,20);
+    position: relative;
+    z-index: 2;
 }
+.matrix-ceil.part div:last-child {
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    background-color:  rgba(80,80,80, 0.6);
+}
+/*
+.matrix-ceil.part::after {
+    content: '';
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+    display: block;
+    width:100%;
+    height: attr(data-part);
+    color: rgb(255,255,255);
+    background-color:  rgba(80,80,80, 0.3);
+    
+}
+*/
 .bright {
     background-color: rgb(80,80,80);
     color: rgb(255,255,255)
@@ -48,7 +70,7 @@
     border:none;
 }
 .sidebar-row button:hover {
-    background-color: rgb(241, 100, 107);
+    background-color: rgb(136, 4, 11);
 }
 .matrix-row:last-child .sidebar-row:after {
     content:'Середнє стовпця';

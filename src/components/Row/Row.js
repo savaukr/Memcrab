@@ -1,27 +1,32 @@
-﻿import React from 'react'
+import React from 'react'
 import { DeleteRow } from '../DeleteRow/DeleteRow'
 import './Row.css'
 
-export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, focusCeil, focusCeilSum } )=> {
+export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, focusCeil, focusCeilSum, mouseOut } )=> {
     const getSumRow = (row) => {
         return row.reduce((summa, item) => summa+item.amount, 0) 
     }
+    const sum = getSumRow(arrRow)
+    
 
     const row = arrRow.map((item) => {
+        const styles = {
+            height: Math.round(item.amount*100/sum)*2+'%'
+        }
         return (
             <div 
                 key={item.id}
                 className={
-                    `matrix-ceil ${footerClass || ''} 
-                    ${item.bright ? 'bright': ''} 
-                    ${item.part ? 'part' : ''}`
+                    `matrix-ceil ${footerClass || ''} ${item.bright ? 'bright': ''} ${item.part ? 'part' : ''}`
                 }
+                //data-part={`${Math.round(item.amount*100/sum)}%`}
                 data-id= {item.id}
                 onClick={increaseAmount}
                 onMouseOver={focusCeil}
-                onMouseOut={focusCeil}
+                onMouseOut={mouseOut}
             >
-                {item.amount}
+                {item.part ? <div>{`${Math.round(item.amount*100/sum)}%`}</div> : item.amount }
+                <div style={styles}></div>       
             </div>
         )
     })  
@@ -43,7 +48,7 @@ export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, foc
                 onMouseOver={focusCeilSum}
                 onMouseOut={focusCeilSum}
             >
-                {getSumRow(arrRow)}
+                {sum}
             </div>
         </div> 
     )

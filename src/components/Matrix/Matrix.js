@@ -1,8 +1,8 @@
-﻿import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Row} from '../Row/Row'
 import './Matrix.css'
 
-export const Matrix = ({arr, deleteHandle, increaseAmount, focusCeil, focusCeilSum}) => {
+export const Matrix = ({arr, deleteHandle, increaseAmount, focusCeil, focusCeilSum, mouseOut}) => {
     const [matrixJSX, setMatrixJSX] = useState()
 
     function getMatrixJsx(arr) {
@@ -17,6 +17,7 @@ export const Matrix = ({arr, deleteHandle, increaseAmount, focusCeil, focusCeilS
                             increaseAmount={increaseAmount}
                             focusCeilSum={focusCeilSum}
                             focusCeil={focusCeil}
+                            mouseOut={mouseOut}
                         /> 
         }
         table[arr.length] = <Row key={arr.length} arrRow = {getAverages(arr)}  footerClass={'footer'} />
