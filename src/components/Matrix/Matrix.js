@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
+import {connect} from 'react-redux'
 import {Row} from '../Row/Row'
+
 import './Matrix.css'
 
-export const Matrix = ({arr, deleteHandle, increaseAmount, focusCeil, focusCeilSum, mouseOut}) => {
+const Matrix = ({matrix, deleteHandle, increaseAmount, focusCeil, focusCeilSum, mouseOut}) => {
     const [matrixJSX, setMatrixJSX] = useState()
 
     function getMatrixJsx(arr) {
@@ -41,15 +43,27 @@ export const Matrix = ({arr, deleteHandle, increaseAmount, focusCeil, focusCeilS
        
 
     useEffect(()=> {
-        setMatrixJSX(getMatrixJsx(arr))
-    }, [arr])
+        setMatrixJSX(getMatrixJsx(matrix))
+    }, [matrix])
     
     return (
         <div className="matrix-wrap">
             <div className="matrix-content">
+            <h4>Matrix {matrix.length}x{matrix[0].length}</h4>
                 <div className="matrix-header">Сума по рядку</div>
                 {matrixJSX}
             </div>
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        matrix: state.matrix.matrix
+    }
+}
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps,null)(Matrix)

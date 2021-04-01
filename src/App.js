@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import { AddRow } from './components/AddRow/AddRow'
-import { Matrix } from './components/Matrix/Matrix'
+import {addRow} from './redux/actions.js'
+import  Matrix  from './components/Matrix/Matrix'
 //import { serviceWrap } from './service/service'
 
 
-function App() {
+function App({addRow}) {
   const M=5 // кількість стрічок 
   const N=10 //кількість стовпчиків
   const X = 5 // кількість близьких Amount
@@ -33,9 +35,11 @@ function App() {
   }
 
   const addRowHandle = (event) => {
-    const arr = matrix.concat()
-    arr.push(getMatrixRow(N, matrix.length))
-    setMatrix(arr)
+    // const arr = matrix.concat()
+    // arr.push(getMatrixRow(N, matrix.length))
+    // setMatrix(arr)
+    //console.log(getMatrixRow(N, matrix.length))
+    addRow(getMatrixRow(N, matrix.length))
   }
 
   const deleteHandle = (event) => {
@@ -161,4 +165,7 @@ try {
 } catch (err) {console.log(err.message)}
 }
 
-export default App;
+const mapDispatchToProps = {
+  addRow
+}
+export default connect(null, mapDispatchToProps)(App)

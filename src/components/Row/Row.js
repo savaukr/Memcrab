@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeleteRow } from '../DeleteRow/DeleteRow'
+import  DeleteRow  from '../DeleteRow/DeleteRow'
 import './Row.css'
 
 export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, focusCeil, focusCeilSum, mouseOut } )=> {
@@ -19,7 +19,7 @@ export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, foc
                 className={
                     `matrix-ceil ${footerClass || ''} ${item.bright ? 'bright': ''} ${item.part ? 'part' : ''}`
                 }
-                //data-part={`${Math.round(item.amount*100/sum)}%`}
+                data-part={`${Math.round(item.amount*100/sum)}%`}
                 data-id= {item.id}
                 onClick={increaseAmount}
                 onMouseOver={focusCeil}

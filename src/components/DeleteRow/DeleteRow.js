@@ -1,6 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {deleteRow} from '../../redux/actions.js'
 
-export const DeleteRow = ({footerClass, deleteHandle, ind}) => {
+const DeleteRow = ({footerClass, deleteRow, ind}) => {
+
+	const deleteHandle = (event) => {
+		const ind = event.target.dataset.ind
+        deleteRow(ind)
+    }
 
     if (footerClass) {
         return (<></>)
@@ -12,3 +19,10 @@ export const DeleteRow = ({footerClass, deleteHandle, ind}) => {
             )
     }
 }
+
+
+const mapDispatchToProps = {
+  deleteRow
+}
+
+export default connect(null, mapDispatchToProps)(DeleteRow)
