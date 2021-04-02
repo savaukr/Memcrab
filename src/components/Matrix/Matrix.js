@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {Row} from '../Row/Row'
+import Row from '../Row/Row'
 
 import './Matrix.css'
 
-const Matrix = ({matrix, deleteHandle, increaseAmount, focusCeil, focusCeilSum, mouseOut}) => {
+const Matrix = ({matrix,  focusCeil, focusCeilSum, mouseOut}) => {
     const [matrixJSX, setMatrixJSX] = useState()
 
     function getMatrixJsx(arr) {
@@ -14,9 +14,8 @@ const Matrix = ({matrix, deleteHandle, increaseAmount, focusCeil, focusCeilSum, 
             table[i] = <Row
                             key={i}
                             arrRow = {arr[i]}
-                            deleteHandle={deleteHandle}
                             ind={i}
-                            increaseAmount={increaseAmount}
+                            
                             focusCeilSum={focusCeilSum}
                             focusCeil={focusCeil}
                             mouseOut={mouseOut}
@@ -61,9 +60,6 @@ const mapStateToProps = state => {
     return {
         matrix: state.matrix.matrix
     }
-}
-const mapDispatchToProps = {
-  
 }
 
 export default connect(mapStateToProps,null)(Matrix)

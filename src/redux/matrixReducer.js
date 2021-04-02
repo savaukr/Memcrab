@@ -1,4 +1,4 @@
-import {ADD_ROW, DELETE_ROW} from './types.js'
+import {ADD_ROW, DELETE_ROW, INCREASE_AMOUNT} from './types.js'
 
 const M=5 // кількість стрічок 
 const N=10 //кількість стовпчиків
@@ -25,22 +25,27 @@ function getMatrixRow(columns=N, i) {
 }
 
 export const matrixReducer = (state = initialState, action) => {
+	let arr = state.matrix.concat()
+
 	switch (action.type) {
 		case ADD_ROW: 
 			return { ...state, matrix:[...state.matrix, action.payload]}
-			break
 		case DELETE_ROW:
-				const arr = state.matrix.concat()
-			    arr.splice(action.payload, 1)
-			    for (let i= action.payload; i<arr.length; i++) {
-			      for (let j=0; j< arr[i].length; j++) {
-			        const row = +arr[i][j].id.split('x')[0]
-			        arr[i][j].id = `${row-1}x${j}`
-			        
-			      }
-			    }
+		    arr.splice(action.payload, 1)
+		    for (let i= action.payload; i<arr.length; i++) {
+		      for (let j=0; j< arr[i].length; j++) {
+		        const row = +arr[i][j].id.split('x')[0]
+		        arr[i][j].id = `${row-1}x${j}`
+		        
+		      }
+		    }
 			return {...state, matrix:[...arr]}
-			break
+		case INCREASE_AMOUNT: 
+			const row = action.payload.row
+			const column = action.payload.column
+			arr[row][column]['amount'] = arr[row][column]['amount']+1
+			return { ...state, matrix:[...arr]}
+		
 
 		default: return state
 	}

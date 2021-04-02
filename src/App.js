@@ -42,27 +42,27 @@ function App({addRow}) {
     addRow(getMatrixRow(N, matrix.length))
   }
 
-  const deleteHandle = (event) => {
-    const arr = matrix.concat()
-    arr.splice(event.target.dataset.ind, 1)
-    for (let i= event.target.dataset.ind; i<arr.length; i++) {
-      for (let j=0; j< arr[i].length; j++) {
-        const row = +arr[i][j].id.split('x')[0]
-        arr[i][j].id = `${row-1}x${j}`
-      }
-    }
-    setMatrix(arr)
-  }
+  // const deleteHandle = (event) => {
+  //   const arr = matrix.concat()
+  //   arr.splice(event.target.dataset.ind, 1)
+  //   for (let i= event.target.dataset.ind; i<arr.length; i++) {
+  //     for (let j=0; j< arr[i].length; j++) {
+  //       const row = +arr[i][j].id.split('x')[0]
+  //       arr[i][j].id = `${row-1}x${j}`
+  //     }
+  //   }
+  //   setMatrix(arr)
+  // }
 
-  const increaseAmount = (event) => {
-    if (event.target.dataset.id) {
-      const arr = matrix.concat()
-      const row = +event.target.dataset.id.split('x')[0]
-      const column = +event.target.dataset.id.split('x')[1]
-      arr[row][column]['amount'] = arr[row][column]['amount']+1
-      setMatrix(arr)
-    }  
-  }
+  // const increaseAmount = (event) => {
+  //   if (event.target.dataset.id) {
+  //     const arr = matrix.concat()
+  //     const row = +event.target.dataset.id.split('x')[0]
+  //     const column = +event.target.dataset.id.split('x')[1]
+  //     arr[row][column]['amount'] = arr[row][column]['amount']+1
+  //     setMatrix(arr)
+  //   }  
+  // }
 
   const focusCeil = (event) => {
     try{
@@ -153,8 +153,8 @@ try {
       <div className="container">
         <Matrix 
           arr={matrix}
-          deleteHandle={deleteHandle}
-          increaseAmount={increaseAmount}
+          
+          
           focusCeilSum={focusCeilSum}
           focusCeil={focusCeil}
           mouseOut={mouseOut}

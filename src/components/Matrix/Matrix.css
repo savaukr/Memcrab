@@ -4,7 +4,6 @@
     display:flex;
 	justify-content: center;
 	align-items: center;
-    overflow: auto;
 }
 .matrix-content {
     border: 1px solid rgb(24, 1, 1);

@@ -1,12 +1,24 @@
 import React from 'react'
 import  DeleteRow  from '../DeleteRow/DeleteRow'
+import {connect} from 'react-redux'
+import {increaseAmount} from '../../redux/actions.js'
+
 import './Row.css'
 
-export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, focusCeil, focusCeilSum, mouseOut } )=> {
+const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, focusCeil, focusCeilSum, mouseOut } )=> {
     const getSumRow = (row) => {
         return row.reduce((summa, item) => summa+item.amount, 0) 
     }
     const sum = getSumRow(arrRow)
+
+    const increaseAmountHandle = (event) => {
+        if (event.target.dataset.id[0] !== 'f' ) {
+          const row = +event.target.dataset.id.split('x')[0]
+          const column = +event.target.dataset.id.split('x')[1]
+          increaseAmount(row,column)
+        }  
+       
+    }
     
 
     const row = arrRow.map((item) => {
@@ -21,7 +33,8 @@ export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, foc
                 }
                 data-part={`${Math.round(item.amount*100/sum)}%`}
                 data-id= {item.id}
-                onClick={increaseAmount}
+                onClick={increaseAmountHandle}
+                onMouseDown = {(event)=>{event.preventDefault()}}
                 onMouseOver={focusCeil}
                 onMouseOut={mouseOut}
             >
@@ -53,3 +66,15 @@ export const Row = ({arrRow, footerClass, deleteHandle, ind, increaseAmount, foc
         </div> 
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        matrix: state.matrix.matrix
+    }
+}
+
+const mapDispatchToProps = {
+  increaseAmount
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Row)

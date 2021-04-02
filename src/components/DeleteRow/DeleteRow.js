@@ -5,7 +5,6 @@ import {deleteRow} from '../../redux/actions.js'
 const DeleteRow = ({footerClass, deleteRow, ind}) => {
 
 	const deleteHandle = (event) => {
-		const ind = event.target.dataset.ind
         deleteRow(ind)
     }
 
@@ -14,7 +13,7 @@ const DeleteRow = ({footerClass, deleteRow, ind}) => {
     } else {
             return (
                 <>
-                    <button onClick={deleteHandle} data-ind={ind}>&times;</button>
+                    <button onClick={deleteHandle} >&times;</button>
                 </>
             )
     }
