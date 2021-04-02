@@ -1,7 +1,9 @@
-import {ADD_ROW, DELETE_ROW, INCREASE_AMOUNT} from './types.js'
+import {ADD_ROW, DELETE_ROW, INCREASE_AMOUNT,
+		MOUSE_OVER_CEIL, MOUSE_OUT, MOUSE_OVER_SUM} from './types.js'
 
 const M=5 // кількість стрічок 
 const N=10 //кількість стовпчиків
+const X = 5 // кількість близьких Amount
 
 function getMatrixRow(columns=N, i) {
     const row=[]
@@ -45,6 +47,12 @@ export const matrixReducer = (state = initialState, action) => {
 			const column = action.payload.column
 			arr[row][column]['amount'] = arr[row][column]['amount']+1
 			return { ...state, matrix:[...arr]}
+		case MOUSE_OVER_CEIL: 
+			return { ...state, matrix: [...action.payload]}
+		case MOUSE_OUT: 
+			return { ...state, matrix: [...action.payload]}
+		case MOUSE_OVER_SUM: 
+			return { ...state, matrix: [...action.payload]}
 		
 
 		default: return state
