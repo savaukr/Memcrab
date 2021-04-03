@@ -1,9 +1,6 @@
 import {ADD_ROW, DELETE_ROW, INCREASE_AMOUNT,
 		MOUSE_OVER_CEIL, MOUSE_OUT, MOUSE_OVER_SUM} from './types.js'
-
-const M=5 // кількість стрічок 
-const N=10 //кількість стовпчиків
-const X = 5 // кількість близьких Amount
+import {M, N} from '../config/config'
 
 function getMatrixRow(columns=N, i) {
     const row=[]
